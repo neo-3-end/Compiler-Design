@@ -21,48 +21,48 @@ void main()
     do
     {
         if((stack[top]=='E' && stack[top-1]=='$') && (*(ip)=='$'))
-	    break;
+	        break;
         if(stack[top]=='$'){
-	    push(*ip);
- 	    ip++;
-	    printf("Shift");
+	        push(*ip);
+ 	        ip++;
+	        printf("Shift");
         }
         else if(stack[top]=='d'){
-	    display();
-	    pop();
-	    push('E');
-	    printf("Reduce E->d\n");
+	        display();
+	        pop();
+	        push('E');
+	        printf("Reduce E->d\n");
         }
         else if(stack[top]=='E' && stack[top-1]=='+' && stack[top-2]=='E'&& *ip!='*')
         {
-	    display();
-	    pop();
-	    pop();
-	    pop();
-	    push('E');
-	    printf("Reduce E->E+E");
+	        display();
+	        pop();
+	        pop();
+	        pop();
+	        push('E');
+	        printf("Reduce E->E+E");
         }
         else if(stack[top]=='E' && stack[top-1]=='*' && stack[top-2]=='E'){
-	    display();
-	    pop();
-	    pop();
-	    pop();
-	    push('E');
-	    printf("Reduce E->E*E");
+	        display();
+	        pop();
+	        pop();
+	        pop();
+	        push('E');
+	        printf("Reduce E->E*E");
         }
         else if(stack[top]==')' && stack[top-1]=='E' && stack[top-2]=='('){
-	    display();
-	    pop();
-	    pop();
-	    pop();
-	    push('E');
-	    printf("Reduce E->(E)");
+	        display();
+	        pop();
+	        pop();
+	        pop();
+	        push('E');
+	        printf("Reduce E->(E)");
         }
         else{
-	    display();
-	    push(*ip);
-	    ip++;
-	    printf("shift");
+	        display();
+	        push(*ip);
+	        ip++;
+	        printf("shift");
         }
     }while(1);
     display();
